@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    /* Soft warm backgrounds */
+    --background: 0.98 0.01 85;
+    --foreground: 0.2 0.02 200;
+    --card: 0.995 0.005 85;
+    --card-foreground: 0.2 0.02 200;
+    --popover: 0.995 0.005 85;
+    --popover-foreground: 0.2 0.02 200;
+    /* Medical teal primary */
+    --primary: 0.55 0.12 195;
+    --primary-foreground: 0.98 0.01 85;
+    /* Muted warm gray */
+    --secondary: 0.92 0.01 85;
+    --secondary-foreground: 0.3 0.02 200;
+    --muted: 0.95 0.01 85;
+    --muted-foreground: 0.5 0.02 200;
+    /* Warm amber accent */
+    --accent: 0.75 0.14 65;
+    --accent-foreground: 0.2 0.02 65;
+    /* Clinical red for destructive */
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0.01 85;
+    /* Success green for completed actions */
+    --success: 0.65 0.15 145;
+    --success-foreground: 0.98 0.01 85;
+    /* Borders and inputs */
+    --border: 0.88 0.01 200;
+    --input: 0.88 0.01 200;
+    --ring: 0.55 0.12 195;
+    /* Charts - medical palette */
+    --chart-1: 0.55 0.12 195;
+    --chart-2: 0.75 0.14 65;
+    --chart-3: 0.65 0.15 145;
+    --chart-4: 0.45 0.1 260;
+    --chart-5: 0.55 0.22 25;
+    /* Sidebar - light teal background */
+    --sidebar: 0.96 0.02 195;
+    --sidebar-foreground: 0.25 0.03 200;
+    --sidebar-primary: 0.55 0.12 195;
+    --sidebar-primary-foreground: 0.98 0.01 85;
+    --sidebar-accent: 0.92 0.02 195;
+    --sidebar-accent-foreground: 0.25 0.03 200;
+    --sidebar-border: 0.88 0.02 195;
+    --sidebar-ring: 0.55 0.12 195;
+  }
+
+  .dark {
+    /* Deep teal-gray backgrounds */
+    --background: 0.15 0.02 200;
+    --foreground: 0.95 0.01 85;
+    --card: 0.18 0.02 200;
+    --card-foreground: 0.95 0.01 85;
+    --popover: 0.2 0.02 200;
+    --popover-foreground: 0.95 0.01 85;
+    /* Lighter teal for dark mode primary */
+    --primary: 0.65 0.12 195;
+    --primary-foreground: 0.15 0.02 200;
+    /* Muted dark gray-teal */
+    --secondary: 0.25 0.02 200;
+    --secondary-foreground: 0.95 0.01 85;
+    --muted: 0.25 0.02 200;
+    --muted-foreground: 0.65 0.02 200;
+    /* Warm amber accent for dark */
+    --accent: 0.7 0.14 65;
+    --accent-foreground: 0.15 0.02 200;
+    /* Destructive adjusted for dark */
+    --destructive: 0.6 0.22 25;
+    --destructive-foreground: 0.95 0.01 85;
+    /* Success for dark mode */
+    --success: 0.6 0.15 145;
+    --success-foreground: 0.95 0.01 85;
+    /* Subtle borders in dark */
+    --border: 0.3 0.02 200;
+    --input: 0.3 0.02 200;
+    --ring: 0.65 0.12 195;
+    /* Chart colors for dark mode */
+    --chart-1: 0.65 0.12 195;
+    --chart-2: 0.7 0.14 65;
+    --chart-3: 0.6 0.15 145;
+    --chart-4: 0.55 0.1 260;
+    --chart-5: 0.6 0.22 25;
+    /* Sidebar dark teal */
+    --sidebar: 0.18 0.02 200;
+    --sidebar-foreground: 0.9 0.01 85;
+    --sidebar-primary: 0.65 0.12 195;
+    --sidebar-primary-foreground: 0.15 0.02 200;
+    --sidebar-accent: 0.25 0.02 200;
+    --sidebar-accent-foreground: 0.9 0.01 85;
+    --sidebar-border: 0.3 0.02 200;
+    --sidebar-ring: 0.65 0.12 195;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+}
+
+@layer utilities {
+  .status-pending {
+    @apply bg-accent/10 text-accent-foreground border-accent/30;
+  }
+  .status-completed {
+    background-color: oklch(var(--success) / 0.1);
+    color: oklch(var(--success-foreground));
+    border-color: oklch(var(--success) / 0.3);
+  }
+  .status-cancelled {
+    @apply bg-destructive/10 text-destructive-foreground border-destructive/30;
+  }
+}
+
+@media print {
+  body {
+    @apply bg-white text-black;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+}
